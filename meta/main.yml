@@ -1,0 +1,17 @@
+galaxy_info:
+  author: Christian Kemper
+  description: LunarVim installation
+  license: MIT
+  role_name: lunarvim
+  namespace: ck3mp3r
+  min_ansible_version: 2.1
+  galaxy_tags: []
+  platforms:
+    - name: MacOSX
+      versions:
+        - any
+        - all
+    - name: Debian
+      versions:
+        - all
+dependencies: []

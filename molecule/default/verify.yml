@@ -1,0 +1,15 @@
+---
+# This is an example playbook to execute Ansible tests.
+
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+  - name: Stat ~{{ user }}/.local/share/lunarvim/lvim
+    stat:
+      path: ~{{ user }}/.local/share/lunarvim/lvim
+    register: lunarvim_exists
+
+  - name: ~{{ user }}/.lunarvim exists
+    assert:
+      that: lunarvim_exists.stat.exists

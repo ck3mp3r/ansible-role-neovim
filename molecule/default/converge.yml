@@ -1,0 +1,12 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: print out os family
+      debug: msg={{ ansible_os_family }}
+    - name: Include ansible-role-neovim
+      include_role:
+        name: ansible-role-neovim
+      vars: 
+        with_support_for: [nodejs, ruby, python]
+        NODE_VERSION: v16.13.2
