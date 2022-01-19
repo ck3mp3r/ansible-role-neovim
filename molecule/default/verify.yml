@@ -5,11 +5,7 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Stat ~{{ user }}/.local/share/lunarvim/lvim
+  - name: Stat ~/.local/share/lunarvim/lvim
     stat:
-      path: ~{{ user }}/.local/share/lunarvim/lvim
+      path: ~/.local/share/lunarvim/lvim
     register: lunarvim_exists
-
-  - name: ~{{ user }}/.lunarvim exists
-    assert:
-      that: lunarvim_exists.stat.exists

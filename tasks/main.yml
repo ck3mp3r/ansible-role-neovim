@@ -1,2 +1,51 @@
 ---
-- include_tasks: neovim.yaml
+- block:
+  - name: Install neovim - (Darwin)
+    homebrew:
+      package:
+        - neovim
+      state: latest
+
+  - name: Tap cask-fonts
+    homebrew_tap:
+      name: homebrew/cask-fonts
+      state: present
+
+  - name: Install nerd fonts
+    homebrew_cask:
+      name: font-hack-nerd-font
+      state: upgraded
+
+  when: ansible_os_family | lower == 'darwin'
+
+- name: Install neovim - (Debian)
+  become: yes
+  package:
+    name:
+      - neovim
+    state: present
+
+  when: ansible_os_family | lower == 'debian'
+
+- name: Install nodejs support for neovim
+  npm:
+    name: neovim
+    state: latest
+    global: yes
+
+  when: '"nodejs" in with_support_for'
+
+- name: Install python support for neovim
+  pip:
+    name:
+    - neovim
+    state: latest
+
+  when: '"python" in with_support_for'
+
+- name: Install ruby support for neovim
+  gem:
+    name: neovim
+    state: latest
+
+  when: '"ruby" in with_support_for'

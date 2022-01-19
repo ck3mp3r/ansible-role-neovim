@@ -9,4 +9,3 @@
         name: ansible-role-neovim
       vars: 
         with_support_for: [nodejs, ruby, python]
-        NODE_VERSION: v16.13.2
