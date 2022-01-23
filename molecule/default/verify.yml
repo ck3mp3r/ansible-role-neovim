@@ -5,7 +5,14 @@
   hosts: all
   gather_facts: false
   tasks:
-  - name: Stat ~/.local/share/lunarvim/lvim
-    stat:
-      path: ~/.local/share/lunarvim/lvim
-    register: lunarvim_exists
+
+    - name: Check if nvim is installed
+      command: which nvim
+      changed_when: false
+      failed_when: nvim_installed.rc not in [0,1]
+      register: nvim_installed
+
+    - name: Return fail if it is not installed
+      fail:
+        msg: "nvim is not installed, install first"
+      when: nvim_installed.rc not in [ 0 ]

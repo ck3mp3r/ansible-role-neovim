@@ -7,5 +7,3 @@
     - name: Include ansible-role-neovim
       include_role:
         name: ansible-role-neovim
-      vars: 
-        with_support_for: [nodejs, ruby, python]
