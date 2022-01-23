@@ -29,7 +29,9 @@
 
 - name: Install nodejs support for neovim
   npm:
-    name: neovim
+    name: 
+      - neovim
+      - tree-sitter-cli
     state: latest
     global: yes
 
